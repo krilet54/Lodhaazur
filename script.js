@@ -96,3 +96,53 @@ testimonialButtons.forEach((btn) => {
   });
 });
 
+const legalLinks = document.querySelectorAll(".legal-link");
+const legalModals = document.querySelectorAll(".legal-modal");
+
+function getOpenLegalModal() {
+  return Array.from(legalModals).find((modal) => !modal.hasAttribute("hidden"));
+}
+
+function closeLegalModal(modal) {
+  if (!modal) return;
+  modal.setAttribute("hidden", "");
+  if (!getOpenLegalModal()) {
+    document.body.classList.remove("modal-open");
+  }
+}
+
+function openLegalModal(modal) {
+  if (!modal) return;
+  legalModals.forEach((item) => item.setAttribute("hidden", ""));
+  modal.removeAttribute("hidden");
+  document.body.classList.add("modal-open");
+}
+
+legalLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    const targetId = link.dataset.modalTarget;
+    if (!targetId) return;
+    const targetModal = document.getElementById(targetId);
+    openLegalModal(targetModal);
+  });
+});
+
+legalModals.forEach((modal) => {
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      closeLegalModal(modal);
+    }
+  });
+
+  const closeBtn = modal.querySelector(".legal-close");
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => closeLegalModal(modal));
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape") return;
+  closeLegalModal(getOpenLegalModal());
+});
+

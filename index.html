@@ -59,7 +59,7 @@
             </div>
           </div>
           <div class="hero-media" aria-label="Hero image placeholder">
-            [HERO IMAGE PLACEHOLDER]
+            <img class="media-image" src="banner.jpg" alt="Lodha Azur hero banner">
           </div>
         </div>
         <aside class="lead-form" id="contact">
@@ -124,7 +124,9 @@
 
     <section class="section bg-light" id="overview">
       <div class="container split">
-        <div class="media-block">[IMAGE PLACEHOLDER]</div>
+        <div class="media-block">
+          <img class="media-image" src="23.03.2024_1855055434_L-Azur_Image-Resize_1000X480_SN4.jpg" alt="Lodha Azur overview image">
+        </div>
         <div>
           <h2>About Lodha Azur</h2>
           <p>Welcome to Lodha Azur - an exclusive residential development in Akshaya Nagar, Bannerghatta Road, Bangalore.</p>
@@ -144,15 +146,21 @@
         </div>
         <div class="tab-panels">
           <article class="tab-panel active" id="plan-3bhk">
-            <div class="plan-image">[FLOOR PLAN IMAGE PLACEHOLDER]</div>
+            <div class="plan-image">
+              <img class="media-image" src="23.03.2024_1855055434_L-Azur_Image-Resize_1000X480_SN5.jpg" alt="Lodha Azur 3 BHK floor plan">
+            </div>
             <p>TYPE: 3 BHK | AREA: 1970 Sq.Ft</p>
           </article>
           <article class="tab-panel" id="plan-35bhk">
-            <div class="plan-image">[FLOOR PLAN IMAGE PLACEHOLDER]</div>
+            <div class="plan-image">
+              <img class="media-image" src="g1.webp" alt="Lodha Azur 3.5 BHK floor plan">
+            </div>
             <p>TYPE: 3.5 BHK | AREA: 2454 Sq.Ft</p>
           </article>
           <article class="tab-panel" id="plan-4bhk">
-            <div class="plan-image">[FLOOR PLAN IMAGE PLACEHOLDER]</div>
+            <div class="plan-image">
+              <img class="media-image" src="g2.webp" alt="Lodha Azur 4 BHK floor plan">
+            </div>
             <p>TYPE: 4 BHK / Penthouse | AREA: [AREA PLACEHOLDER]</p>
           </article>
         </div>
@@ -177,7 +185,9 @@
 
     <section class="section" id="location-advantage">
       <div class="container split">
-        <div class="media-block">[MAP IMAGE / MAP SNAPSHOT PLACEHOLDER]</div>
+        <div class="media-block">
+          <img class="media-image" src="AAFuWkQu2jM_1770889834818.jpg" alt="Lodha Azur location snapshot">
+        </div>
         <div>
           <h2>Location Advantage</h2>
           <ul class="bullet-list">
@@ -195,9 +205,9 @@
         <h2>Gallery</h2>
         <div class="gallery-slider" aria-live="polite">
           <div class="gallery-track">
-            <figure class="gallery-slide active">[IMAGE PLACEHOLDER 1]</figure>
-            <figure class="gallery-slide">[IMAGE PLACEHOLDER 2]</figure>
-            <figure class="gallery-slide">[IMAGE PLACEHOLDER 3]</figure>
+            <figure class="gallery-slide active"><img class="media-image" src="g1.webp" alt="Lodha Azur gallery image 1"></figure>
+            <figure class="gallery-slide"><img class="media-image" src="g2.webp" alt="Lodha Azur gallery image 2"></figure>
+            <figure class="gallery-slide"><img class="media-image" src="g3.webp" alt="Lodha Azur gallery image 3"></figure>
           </div>
           <div class="gallery-controls">
             <button type="button" class="slider-btn" data-dir="prev">Prev</button>
@@ -229,17 +239,17 @@
         <h2>Testimonials</h2>
         <div class="testimonial-slider" aria-live="polite">
           <article class="testimonial active">
-            <div class="avatar">[PROFILE IMAGE PLACEHOLDER]</div>
+            <div class="avatar"><img class="avatar-image" src="g1.webp" alt="Customer testimonial profile 1"></div>
             <blockquote>"Quote from customer"</blockquote>
             <p>Name, City</p>
           </article>
           <article class="testimonial">
-            <div class="avatar">[PROFILE IMAGE PLACEHOLDER]</div>
+            <div class="avatar"><img class="avatar-image" src="g2.webp" alt="Customer testimonial profile 2"></div>
             <blockquote>"Quote from customer"</blockquote>
             <p>Name, City</p>
           </article>
           <article class="testimonial">
-            <div class="avatar">[PROFILE IMAGE PLACEHOLDER]</div>
+            <div class="avatar"><img class="avatar-image" src="g3.webp" alt="Customer testimonial profile 3"></div>
             <blockquote>"Quote from customer"</blockquote>
             <p>Name, City</p>
           </article>
@@ -262,7 +272,7 @@
 
   <footer class="site-footer">
     <div class="container footer-grid">
-      <div>Lodha Azur</div>
+      <div><img class="footer-brand-logo" src="Lodha AZUR_Logo_2024-01.png" alt="Lodha Azur logo"></div>
       <div>Akshaya Nagar, Bannerghatta Road, Bangalore</div>
       <div>
         <a href="tel:+917411189191">+91 74111 89191</a>
@@ -270,12 +280,39 @@
         <a href="mailto:abhinav787@gmail.com">abhinav787@gmail.com</a>
       </div>
       <div>
-        <a href="#">Privacy Policy</a>
+        <a href="#" class="legal-link" data-modal-target="privacy-modal">Privacy Policy</a>
+        <a href="#" class="legal-link" data-modal-target="disclaimer-modal">Disclaimer</a>
         <a href="#hero">Back to Top</a>
       </div>
     </div>
     <p class="copyright">Copyright 2026 Lodha Azur. All rights reserved.</p>
   </footer>
+
+  <div class="legal-modal" id="disclaimer-modal" hidden>
+    <div class="legal-modal-panel" role="dialog" aria-modal="true" aria-labelledby="disclaimer-title">
+      <button class="legal-close" type="button" aria-label="Close disclaimer">Close</button>
+      <h3 id="disclaimer-title">Disclaimer</h3>
+      <p>The information provided on this website is intended exclusively for informational purposes and should not be construed as an offer of services. Project Rera registered number is PRM/KA/RERA/1251/310/PR/220324/006728. The pricing information presented on this website is subject to alteration without advance notification, and the assurance of property availability cannot be guaranteed. The images showcased on this website are for representational purposes only and may not accurately reflect the actual properties. We may share your data with Real Estate Regulatory Authority (RERA) registered Developers for further processing as necessary. Additionally, we may send updates and information to the mobile number or email address registered with us. All rights reserved. The content, design, and information on this website are protected by copyright and other intellectual property rights. Any unauthorized use or reproduction of the content may violate applicable laws. For accurate and up-to-date information regarding services, pricing, availability, and any other details, it is recommended to contact us directly through the provided contact information on this website. Thank you for visiting our website.</p>
+    </div>
+  </div>
+
+  <div class="legal-modal" id="privacy-modal" hidden>
+    <div class="legal-modal-panel" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
+      <button class="legal-close" type="button" aria-label="Close privacy policy">Close</button>
+      <h3 id="privacy-title">Privacy Policy &amp; Terms of Uses</h3>
+      <p>We value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services. Please read this policy carefully to understand our practices regarding your personal information.</p>
+      <p><strong>Information We Collect:</strong> 1.1 Personal Information: We may collect personal information, such as your name, email address and phone number, when you voluntarily provide it to us while using our website or services. 1.2 Usage Information: We may automatically collect certain information about your device and how you interact with our website or services. This may include your IP address, browser type, operating system, referral URLs, pages viewed, and other browsing information.</p>
+      <p><strong>How We Use Your Information:</strong> 2.1 Provide and Improve Services: We may use your personal information to provide you with the services you request and to improve our website and services' functionality. 2.2 Communication: We may use your personal information to communicate with you about our services, respond to your inquiries, and provide customer support. 2.3 Marketing and Advertising: With your consent, we may send you promotional communications about our services. 2.4 Legal Compliance: We may use your information to comply with applicable laws, regulations, legal processes, or enforceable governmental requests.</p>
+      <p><strong>How We Disclose Your Information:</strong> 3.1 Service Providers: We may share your information with third-party service providers who help us with website operations, such as hosting, analytics, and customer support. 3.2 Business Transfers: If we undergo a merger, acquisition, or sale of all or a portion of our assets, your information may be transferred as part of the transaction. 3.3 Legal Requirements: We may disclose your information if required to do so by law or in response to a valid legal request, such as a court order or government inquiry. 3.4 Consent: We may share your information with third parties if you provide us with your consent to do so.</p>
+      <p><strong>Cookies and Similar Technologies:</strong> We may use cookies, web beacons, and similar technologies to collect information about your browsing activities on our website. These technologies help us personalize your experience, analyze website usage, and track advertisements. You can manage your cookie preferences through your browser settings.</p>
+      <p><strong>Data Security:</strong> We implement reasonable security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction.</p>
+      <p><strong>Your Rights:</strong> You have certain rights regarding your personal information. You can request access, correction, deletion, or restriction of your information, as well as object to its processing. Please contact us using the information provided below to exercise your rights.</p>
+      <p><strong>Children's Privacy:</strong> Our website and services are not intended for children under the age of 12. We do not knowingly collect personal information from individuals in this age group.</p>
+      <p><strong>Changes to the Privacy Policy:</strong> We may update our Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date. We encourage you to review this policy periodically.</p>
+      <p><strong>Usage of Developer or Builder Information:</strong> All images, videos, cost descriptions, logos, and other project materials featured on this landing page are presented in accordance with the respective project developer or its licensors. We are in legal agreements and established legal relationships with the said respective developer or builder, thereby possessing the authority to advertise, market for sale, and generate leads for the respective project.</p>
+      <p><strong>Contact Us:</strong> If you have any questions or concerns about our Privacy Policy or to add or delete your data, please contact us at +91-7411189191 or you can send us an email on bkinfra7@gmail.com.</p>
+    </div>
+  </div>
 
   <script src="script.js" defer></script>
 </body>
