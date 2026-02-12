@@ -96,13 +96,3 @@ testimonialButtons.forEach((btn) => {
   });
 });
 
-const leadForm = document.querySelector(".lead-form");
-const mobileToggle = document.querySelector(".mobile-form-toggle");
-
-if (leadForm && mobileToggle) {
-  mobileToggle.addEventListener("click", () => {
-    const isOpen = leadForm.classList.toggle("mobile-open");
-    mobileToggle.setAttribute("aria-expanded", String(isOpen));
-    mobileToggle.textContent = isOpen ? "Close Form" : "Enquire Now";
-  });
-}
