@@ -25,60 +25,50 @@ function closePlan() {
   document.getElementById("plansGrid").style.display = "flex";
 }
 
-const gallerySlides = document.querySelectorAll(".gallery-slide");
-const galleryButtons = document.querySelectorAll(".slider-btn");
-const galleryThumbs = document.querySelectorAll(".thumb");
-let galleryIndex = 0;
+const slides = document.querySelectorAll(".gallery-slide");
+const nextBtn = document.querySelector(".gallery-nav.next");
+const prevBtn = document.querySelector(".gallery-nav.prev");
 
-function setGallerySlide(index) {
-  gallerySlides.forEach((slide, i) => {
-    slide.classList.toggle("active", i === index);
+let currentIndex = 0;
+let isAnimating = false;
+
+function goToSlide(direction) {
+  if (isAnimating) return;
+  isAnimating = true;
+
+  const current = slides[currentIndex];
+  current.classList.remove("active");
+
+  if (direction === "next") {
+    current.classList.add("exit-left");
+    currentIndex = (currentIndex + 1) % slides.length;
+  } else {
+    current.classList.add("exit-right");
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+  }
+
+  const nextSlide = slides[currentIndex];
+  nextSlide.style.transition = "none";
+  nextSlide.style.transform =
+    direction === "next" ? "translateX(100%)" : "translateX(-100%)";
+
+  requestAnimationFrame(() => {
+    nextSlide.style.transition =
+      "transform 1s cubic-bezier(.77,0,.18,1)";
+    nextSlide.style.transform = "translateX(0)";
+    nextSlide.classList.add("active");
   });
 
-  galleryThumbs.forEach((thumb, i) => {
-    thumb.classList.toggle("active", i === index);
-  });
+  setTimeout(() => {
+    slides.forEach(slide => {
+      slide.classList.remove("exit-left", "exit-right");
+    });
+    isAnimating = false;
+  }, 1200);
 }
 
-galleryButtons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const direction = btn.dataset.dir;
-    galleryIndex = direction === "next"
-      ? (galleryIndex + 1) % gallerySlides.length
-      : (galleryIndex - 1 + gallerySlides.length) % gallerySlides.length;
-
-    setGallerySlide(galleryIndex);
-  });
-});
-
-galleryThumbs.forEach((thumb) => {
-  thumb.addEventListener("click", () => {
-    galleryIndex = Number(thumb.dataset.index);
-    setGallerySlide(galleryIndex);
-  });
-});
-
-let touchStartX = 0;
-let touchEndX = 0;
-const gallerySlider = document.querySelector(".gallery-slider");
-
-if (gallerySlider) {
-  gallerySlider.addEventListener("touchstart", (event) => {
-    touchStartX = event.changedTouches[0].screenX;
-  });
-
-  gallerySlider.addEventListener("touchend", (event) => {
-    touchEndX = event.changedTouches[0].screenX;
-    const delta = touchStartX - touchEndX;
-    if (Math.abs(delta) < 40) return;
-
-    galleryIndex = delta > 0
-      ? (galleryIndex + 1) % gallerySlides.length
-      : (galleryIndex - 1 + gallerySlides.length) % gallerySlides.length;
-
-    setGallerySlide(galleryIndex);
-  });
-}
+nextBtn.addEventListener("click", () => goToSlide("next"));
+prevBtn.addEventListener("click", () => goToSlide("prev"));
 
 const testimonials = document.querySelectorAll(".testimonial");
 const testimonialButtons = document.querySelectorAll(".test-btn");

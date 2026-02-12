@@ -712,19 +712,120 @@ a {
   }
 }
 
-.amenities-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
+/* ===== Luxury Amenities Section ===== */
+
+.amenities-section {
+  position: relative;
+  padding: 140px 0;
+  color: #fff;
+  overflow: hidden;
 }
 
-.amenity-item {
-  border: 1px solid rgba(142, 109, 66, 0.3);
-  border-radius: 12px;
-  background: var(--surface);
-  padding: 16px;
+.amenities-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("23.03.2024_1855055434_L-Azur_Image-Resize_1000X480_SN5.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  transform: scale(1.05);
+}
+
+.amenities-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.85),
+    rgba(0, 0, 0, 0.75)
+  );
+  z-index: 2;
+}
+
+.amenities-content {
+  position: relative;
+  z-index: 3;
+}
+
+.section-title.light {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 80px;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+}
+
+/* Layout */
+.amenities-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+}
+
+/* Group Styling */
+.amenity-group {
+  padding: 40px;
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(212, 176, 106, 0.25);
+  transition: all 0.4s ease;
+}
+
+.amenity-group:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #d4b06a;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+/* Category Headings */
+.amenity-group h3 {
+  font-size: 26px;
+  color: #d4b06a;
+  letter-spacing: 0.15em;
+  margin-bottom: 25px;
+  text-transform: uppercase;
   font-weight: 700;
-  color: #49392a;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 8px;
+}
+
+/* List */
+.amenity-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.amenity-group li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 14px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #f1f1f1;
+  font-weight: 600;
+}
+
+/* Elegant Gold Bullet */
+.amenity-group li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 8px;
+  height: 8px;
+  background: #d4b06a;
+  border-radius: 50%;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .amenities-wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
 }
 
 .bullet-list {
@@ -752,53 +853,81 @@ a {
   color: #5b4936;
 }
 
+/* ===== Luxury Gallery ===== */
+
+.gallery-section {
+  position: relative;
+  height: 85vh;
+  overflow: hidden;
+  background: #000;
+}
+
+.gallery-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
 .gallery-slide {
-  min-height: 390px;
-  display: none;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  transform: translateX(100%);
+  transition: transform 1.2s cubic-bezier(.77,0,.18,1);
 }
 
+.gallery-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Active Slide */
 .gallery-slide.active {
-  display: grid;
-  animation: fadeIn 0.35s ease;
+  transform: translateX(0);
+  z-index: 2;
 }
 
-.gallery-controls {
-  margin-top: 12px;
-  display: flex;
-  gap: 10px;
+/* Slide Out Left */
+.gallery-slide.exit-left {
+  transform: translateX(-30%);
+  transition: transform 1.5s ease;
 }
 
-.slider-btn,
-.test-btn {
-  border-radius: 999px;
-  border: 1px solid rgba(142, 109, 66, 0.4);
-  background: #fffaf1;
-  padding: 8px 14px;
-  font-weight: 700;
-  letter-spacing: 0.03em;
+/* Slide Out Right */
+.gallery-slide.exit-right {
+  transform: translateX(30%);
+  transition: transform 1.5s ease;
+}
+
+/* Navigation Arrows */
+.gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: 1px solid rgba(212,176,106,0.6);
+  background: rgba(0,0,0,0.4);
+  color: #d4b06a;
+  font-size: 28px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 5;
 }
 
-.gallery-thumbs {
-  margin-top: 14px;
-  display: flex;
-  gap: 10px;
+.gallery-nav:hover {
+  background: #d4b06a;
+  color: #000;
 }
 
-.thumb {
-  min-width: 38px;
-  height: 38px;
-  border-radius: 8px;
-  border: 1px solid rgba(142, 109, 66, 0.42);
-  background: #fffaf1;
-  font-weight: 700;
-  cursor: pointer;
+.gallery-nav.prev {
+  left: 40px;
 }
 
-.thumb.active {
-  background: #3a2c1f;
-  border-color: #3a2c1f;
-  color: #fff;
+.gallery-nav.next {
+  right: 40px;
 }
 
 .testimonial {
