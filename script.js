@@ -25,50 +25,37 @@ function closePlan() {
   document.getElementById("plansGrid").style.display = "flex";
 }
 
-const slides = document.querySelectorAll(".gallery-slide");
-const nextBtn = document.querySelector(".gallery-nav.next");
-const prevBtn = document.querySelector(".gallery-nav.prev");
+const gallerySlides = Array.from(document.querySelectorAll(".gallery-slide"));
+const galleryNext = document.querySelector(".gallery-nav.next");
+const galleryPrev = document.querySelector(".gallery-nav.prev");
 
-let currentIndex = 0;
-let isAnimating = false;
+let galleryIndex = 0;
+let galleryLocked = false;
 
-function goToSlide(direction) {
-  if (isAnimating) return;
-  isAnimating = true;
+function setGallerySlide(targetIndex) {
+  if (galleryLocked || targetIndex === galleryIndex) return;
+  const total = gallerySlides.length;
+  if (!total) return;
 
-  const current = slides[currentIndex];
+  galleryLocked = true;
+
+  const current = gallerySlides[galleryIndex];
+  const next = gallerySlides[(targetIndex + total) % total];
+
   current.classList.remove("active");
+  next.classList.add("active");
 
-  if (direction === "next") {
-    current.classList.add("exit-left");
-    currentIndex = (currentIndex + 1) % slides.length;
-  } else {
-    current.classList.add("exit-right");
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-  }
-
-  const nextSlide = slides[currentIndex];
-  nextSlide.style.transition = "none";
-  nextSlide.style.transform =
-    direction === "next" ? "translateX(100%)" : "translateX(-100%)";
-
-  requestAnimationFrame(() => {
-    nextSlide.style.transition =
-      "transform 1s cubic-bezier(.77,0,.18,1)";
-    nextSlide.style.transform = "translateX(0)";
-    nextSlide.classList.add("active");
-  });
+  galleryIndex = (targetIndex + total) % total;
 
   setTimeout(() => {
-    slides.forEach(slide => {
-      slide.classList.remove("exit-left", "exit-right");
-    });
-    isAnimating = false;
-  }, 1200);
+    galleryLocked = false;
+  }, 420);
 }
 
-nextBtn.addEventListener("click", () => goToSlide("next"));
-prevBtn.addEventListener("click", () => goToSlide("prev"));
+if (galleryNext && galleryPrev && gallerySlides.length) {
+  galleryNext.addEventListener("click", () => setGallerySlide(galleryIndex + 1));
+  galleryPrev.addEventListener("click", () => setGallerySlide(galleryIndex - 1));
+}
 
 const testimonials = document.querySelectorAll(".testimonial");
 const testimonialButtons = document.querySelectorAll(".test-btn");
