@@ -141,6 +141,29 @@ document.addEventListener("keydown", (event) => {
   closeLegalModal(getOpenLegalModal());
 });
 
+/* Location visual toggle (photo ↔ map) */
+(() => {
+  const toggleBtn = document.querySelector(".loc-toggle-btn");
+  const photoPane = document.querySelector(".loc-photo");
+  const mapPane = document.querySelector(".loc-map");
+  if (!toggleBtn || !photoPane || !mapPane) return;
+
+  const setView = (view) => {
+    const showMap = view === "map";
+    photoPane.classList.toggle("active", !showMap);
+    mapPane.classList.toggle("active", showMap);
+    photoPane.setAttribute("aria-hidden", showMap ? "true" : "false");
+    mapPane.setAttribute("aria-hidden", showMap ? "false" : "true");
+    toggleBtn.textContent = showMap ? "View photo" : "Open in map";
+    toggleBtn.setAttribute("aria-pressed", showMap ? "true" : "false");
+  };
+
+  toggleBtn.addEventListener("click", () => {
+    const showingMap = mapPane.classList.contains("active");
+    setView(showingMap ? "photo" : "map");
+  });
+})();
+
 /* Highlight background rotator (cycles images) */
 (() => {
   const images = [
