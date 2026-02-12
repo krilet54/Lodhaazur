@@ -7,7 +7,7 @@
   <meta name="description" content="Lodha Azur presents super luxurious 3, 3.5 and 4 bedroom apartments and penthouses in Akshaya Nagar, Bannerghatta Road, Bangalore.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Lato:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Lato:wght@400;500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -19,7 +19,7 @@
         <a href="#amenities">Amenities</a>
         <a href="#plans">Floor Plans</a>
         <a href="#gallery">Gallery</a>
-        <a href="#location">Location</a>
+        <a href="#location-advantage">Location</a>
       </nav>
       <div class="nav-cta">
         <a class="btn btn-gold" href="tel:+917411189191">Call Now</a>
@@ -30,14 +30,10 @@
 
   <main class="page-shell">
     <section class="hero" id="hero">
-      <img src="banner.jpg" class="hero-img" alt="Lodha Azur luxury residences">
+      <img src="banner.jpg" class="hero-img" alt="Lodha Azur luxury residences" fetchpriority="high" decoding="async">
       <div class="hero-copy">
-        <div class="badge-row">
-          <span class="badge">Lodha Azur</span>
-          <span class="badge">Akshaya Nagar · Bannerghatta Road · Bangalore</span>
-        </div>
-        <h1>Lakefront Luxury Residences</h1>
-        <p class="lead">Exclusive 3, 3.5 &amp; 4 BHK apartments and penthouses designed for refined urban living.</p>
+        <h1>Lodha Azur presents super luxurious 3, 3.5 &amp; 4 Bedroom Apartments and Penthouses, located in Akshaya Nagar, Bannerghatta Road, Bangalore</h1>
+
         <div class="hero-quick">
           <div>
             <p class="quick-label">Starting Price</p>
@@ -49,225 +45,209 @@
           </div>
           <div>
             <p class="quick-label">Sizes</p>
-            <p class="quick-value">1970 – 2454 Sq.Ft</p>
+            <p class="quick-value">1970 &ndash; 2454 Sq.Ft</p>
           </div>
         </div>
+
         <div class="cta-row">
           <a class="btn btn-primary" href="#contact">Book Site Visit</a>
-          <a class="btn btn-outline" href="#contact">Download Brochure</a>
+          <a class="btn btn-outline btn-brochure js-open-enquiry-modal" href="#" data-lead-source="Brochure Download - Hero">Download Brochure</a>
         </div>
       </div>
     </section>
 
     <aside class="lead-form" id="contact">
-          <h3>Enquire Now</h3>
-          <p>Get project details, cost sheet, and brochure.</p>
-          <div class="form-contact-lines">
-            <a href="tel:+917411189191">Call: +91 74111 89191</a>
-            <a href="mailto:abhinav787@gmail.com">Mail: abhinav787@gmail.com</a>
-            <a href="https://wa.me/917411189191" target="_blank" rel="noopener">WhatsApp: +91 74111 89191</a>
-          </div>
-          <form>
-            <input type="hidden" name="utm_source" value="[UTM SOURCE]">
-            <input type="hidden" name="utm_medium" value="[UTM MEDIUM]">
-            <input type="hidden" name="utm_campaign" value="[UTM CAMPAIGN]">
-            <input type="hidden" name="utm_term" value="[UTM TERM]">
-            <input type="hidden" name="utm_content" value="[UTM CONTENT]">
-            <label for="full-name">Full Name *</label>
-            <input id="full-name" name="full-name" type="text" placeholder="Enter full name" required>
-
-            <label for="phone">Phone Number *</label>
-            <input id="phone" name="phone" type="tel" placeholder="Enter phone number" required>
-
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="Enter email address">
-
-            <label for="best-time">Best Time to Contact</label>
-            <select id="best-time" name="best-time">
-              <option value="">Select time</option>
-              <option>Morning</option>
-              <option>Afternoon</option>
-              <option>Evening</option>
-            </select>
-
-            <label for="budget">Budget Range (optional)</label>
-            <input id="budget" name="budget" type="text" placeholder="Ex: 2.5 Cr - 3 Cr">
-
-            <button type="submit" class="btn btn-primary full">Get Exclusive Price</button>
-            <button type="button" class="btn btn-outline full">Download Brochure</button>
-          </form>
-          <div class="tracking-placeholders">
-            <p>[FB PIXEL PLACEHOLDER]</p>
-            <p>[GOOGLE ANALYTICS PLACEHOLDER]</p>
-          </div>
-        </aside>
-        <a class="whatsapp-float" href="https://wa.me/917411189191" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><img src="contact.png" alt="Contact"></a>
+      <div class="lead-form-header">
+        <h3>Book Private Tour</h3>
+        <p>Get project details, cost sheet, and brochure.</p>
       </div>
-    </section>
+      <div class="form-contact-lines">
+        <a href="tel:+917411189191">Call: +91 74111 89191</a>
+        <a href="mailto:abhinav787@gmail.com">Mail: abhinav787@gmail.com</a>
+        <a href="https://wa.me/917411189191" target="_blank" rel="noopener">WhatsApp: +91 74111 89191</a>
+      </div>
+      <form id="sidebarLeadForm" class="lead-capture-form" action="https://formsubmit.co/abhinav787@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Client Enquiry Received - Lodha Azur">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="thank-you.html">
+        <input type="hidden" name="Lead Source" value="Right Sidebar Enquiry">
+
+        <label for="full-name">Full Name *</label>
+        <input id="full-name" name="Name" type="text" placeholder="Enter full name" autocomplete="name" required>
+
+        <label for="phone">Phone Number *</label>
+        <input id="phone" name="Phone Number" type="tel" placeholder="Enter phone number" autocomplete="tel" required>
+
+        <label for="email">Email *</label>
+        <input id="email" name="Email" type="email" placeholder="Enter email address" autocomplete="email" required>
+
+        <button type="submit" class="btn btn-primary full" data-submit-label="Submit">Submit</button>
+        <button type="button" class="btn btn-outline btn-brochure full js-open-enquiry-modal" data-lead-source="Brochure Download - Sidebar">Download Brochure</button>
+        <p class="form-note">By submitting, you agree to be contacted by our sales team.</p>
+        <p class="form-feedback" aria-live="polite"></p>
+      </form>
+    </aside>
+
+    <a class="whatsapp-float" href="https://wa.me/917411189191" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+      <img src="contact.png" alt="Contact">
+    </a>
 
     <section class="section bg-light" id="overview">
       <div class="container split">
-
         <div class="media-block">
-          <img class="media-image" 
-               src="g4.png" 
-               alt="Lodha Azur overview image">
+          <img class="media-image" src="g4.png" alt="Lodha Azur overview image" loading="lazy" decoding="async">
         </div>
 
         <div class="overview-copy">
           <h2>About Lodha Azur</h2>
-
-          <p class="overview-lead">
-            A life of luxury along the waterfront at Akshaya Nagar, Bannerghatta Road, Bangalore.
-          </p>
-
+          <p class="overview-lead">A life of luxury along the waterfront at Akshaya Nagar, Bannerghatta Road, Bangalore.</p>
           <p>
-            Lodha Azur is an exclusive residential address offering premium 3, 3.5 &amp; 4 BHK residences 
-            designed for refined urban living. Thoughtfully planned layouts, elegant architecture, 
+            Lodha Azur is an exclusive residential address offering premium 3, 3.5 &amp; 4 BHK residences
+            designed for refined urban living. Thoughtfully planned layouts, elegant architecture,
             and lush landscapes create a sanctuary in South Bangalore.
           </p>
 
           <div class="overview-highlights">
             <div class="highlight-box">
-              <span class="highlight-value">3, 3.5 & 4 BHK</span>
+              <span class="highlight-value">3, 3.5 &amp; 4 BHK</span>
               <span class="highlight-label">Configurations</span>
             </div>
-
             <div class="highlight-box">
-              <span class="highlight-value">1970 – 2454 Sq.Ft</span>
+              <span class="highlight-value">1970 - 2454 Sq.Ft</span>
               <span class="highlight-label">Residence Sizes</span>
             </div>
-
             <div class="highlight-box">
               <span class="highlight-value">29 Floors</span>
               <span class="highlight-label">Tower Height</span>
             </div>
-
             <div class="highlight-box">
               <span class="highlight-value">Possession 2028</span>
               <span class="highlight-label">Expected Completion</span>
             </div>
           </div>
-
         </div>
-
       </div>
     </section>
 
     <section class="section highlight-section" id="highlights">
-
       <div class="highlight-bg"></div>
       <div class="highlight-overlay"></div>
-
       <div class="container highlight-content">
         <h2 class="section-title light">Signature Highlights</h2>
 
         <div class="highlights-grid">
-
           <article class="highlight-card">
             <h3>Luxury Waterfront Living</h3>
             <p>Expansive lake-facing residences with grand sun-decks and serene green views.</p>
           </article>
-
           <article class="highlight-card">
             <h3>Grand Sundecks</h3>
-            <p>Private 6–8 ft deep decks offering generous outdoor space for relaxation.</p>
+            <p>Private 6-8 ft deep decks offering generous outdoor space for relaxation.</p>
           </article>
-
           <article class="highlight-card">
             <h3>Tranquil Lake Views</h3>
             <p>Overlooking the breathtaking Hullimavu Lake for everyday serenity.</p>
           </article>
-
           <article class="highlight-card">
             <h3>Club Palladio</h3>
             <p>A refined clubhouse with curated lifestyle and wellness amenities.</p>
           </article>
-
           <article class="highlight-card">
             <h3>Grand Arrival Experience</h3>
             <p>Double-height lobby, landscaped greens and high-speed elevators.</p>
           </article>
-
         </div>
       </div>
     </section>
 
-<section class="section" id="plans">
-  <div class="container">
-    <h2 class="plans-title">Floor Plans & Apartment Layouts</h2>
-
-    <div class="plans-box" id="plansBox">
-
-      <!-- Grid View -->
-      <div class="plans-grid" id="plansGrid">
-
-        <div class="plan-tile" onclick="openPlan('plan1')">
-          <img src="3bhk.jpg" alt="3 BHK Floor Plan">
-          <div class="tile-label">3 BHK</div>
-        </div>
-
-        <div class="plan-tile" onclick="openPlan('plan2')">
-          <img src="3bhkstudy.jpg" alt="3 BHK + Study Floor Plan">
-          <div class="tile-label">3 BHK + Study</div>
-        </div>
-
-      </div>
-
-      <!-- Expanded View -->
-      <div class="plan-expanded" id="planExpanded">
-
-        <div class="plan-expanded-inner">
-
-          <div class="expanded-image">
-            <img id="expandedImg" src="" alt="">
-          </div>
-
-          <div class="expanded-content">
-            <h3 id="expandedTitle"></h3>
-            <p id="expandedDesc"></p>
-
-            <div class="expanded-buttons">
-              <a href="#contact" class="btn btn-primary">View Floor Plan</a>
-              <a href="#contact" class="btn btn-outline">View Pricing</a>
+    <section class="section" id="plans">
+      <div class="container">
+        <h2 class="plans-title">Floor Plans &amp; Apartment Layouts</h2>
+        <div class="plans-box" id="plansBox">
+          <div class="plans-grid" id="plansGrid">
+            <div class="plan-tile" onclick="openPlan('plan1')">
+              <img src="3bhk.jpg" alt="3 BHK Floor Plan" loading="lazy" decoding="async">
+              <div class="tile-label">3 BHK</div>
+              <div class="plan-tile-cta">Click to See</div>
+            </div>
+            <div class="plan-tile" onclick="openPlan('plan2')">
+              <img src="3bhkstudy.jpg" alt="3 BHK + Study Floor Plan" loading="lazy" decoding="async">
+              <div class="tile-label">3 BHK + Study</div>
+              <div class="plan-tile-cta">Click to See</div>
             </div>
           </div>
 
+          <div class="plan-expanded" id="planExpanded">
+            <div class="plan-expanded-inner">
+              <div class="expanded-image">
+                <img id="expandedImg" src="" alt="">
+              </div>
+              <div class="expanded-content">
+                <h3 id="expandedTitle"></h3>
+                <p id="expandedDesc"></p>
+                <div class="expanded-buttons">
+                  <a href="#" class="btn btn-primary js-open-enquiry-modal" data-lead-source="Floor Plan Request">View Floor Plan</a>
+                  <a href="#" class="btn btn-outline js-open-enquiry-modal" data-lead-source="Pricing Request">View Pricing</a>
+                </div>
+              </div>
+            </div>
+            <div class="back-arrow" onclick="closePlan()">&larr;</div>
+          </div>
         </div>
-
-        <div class="back-arrow" onclick="closePlan()">←</div>
-
+        <div class="plans-price-wrap">
+          <h3 class="plans-price-title">Available Configurations</h3>
+          <div class="plans-price-table-wrap">
+            <table class="plans-price-table" aria-label="Configuration and pricing enquiry table">
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Carpet Area</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>3 BHK</td>
+                  <td>1265 Sq.ft.</td>
+                  <td>
+                    <a href="#" class="btn btn-primary price-check-btn js-open-enquiry-modal" data-lead-source="Pricing Request - 3 BHK">Check Price</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>3.5 BHK</td>
+                  <td>1583 Sq.ft.</td>
+                  <td>
+                    <a href="#" class="btn btn-primary price-check-btn js-open-enquiry-modal" data-lead-source="Pricing Request - 3.5 BHK">Check Price</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-
-    </div>
-  </div>
-</section>
+    </section>
 
     <section class="section amenities-section" id="amenities">
-
       <div class="amenities-bg"></div>
       <div class="amenities-overlay"></div>
 
       <div class="container amenities-content">
         <h2 class="section-title light">Lifestyle Amenities</h2>
-
         <div class="amenities-wrapper">
-
-          <!-- MIND -->
           <div class="amenity-group">
-            <h3>MIND</h3>
+            <h3>Mind</h3>
             <ul>
               <li>Tree Plaza</li>
               <li>Pavilion with Seating</li>
-              <li>Café & Verandah Lounge</li>
+              <li>Cafe &amp; Verandah Lounge</li>
               <li>Indoor Games Zone</li>
               <li>Activity Room</li>
             </ul>
           </div>
 
-          <!-- BODY -->
           <div class="amenity-group">
-            <h3>BODY</h3>
+            <h3>Body</h3>
             <ul>
               <li>Swimming Pool</li>
               <li>Kid's Pool</li>
@@ -278,9 +258,8 @@
             </ul>
           </div>
 
-          <!-- SOUL -->
           <div class="amenity-group">
-            <h3>SOUL</h3>
+            <h3>Soul</h3>
             <ul>
               <li>Multipurpose Lawn</li>
               <li>Kid's Play Area</li>
@@ -289,14 +268,57 @@
               <li>Pavilion with Seating</li>
             </ul>
           </div>
+        </div>
+      </div>
+    </section>
 
+    <section class="section gallery-section" id="gallery">
+      <div class="container gallery-shell">
+        <div class="gallery-header">
+          <span class="gallery-kicker">Gallery</span>
+          <h2 class="gallery-title">Moments from Lodha Azur</h2>
+          <div class="gallery-rule" aria-hidden="true"></div>
+        </div>
+
+        <div class="gallery-frame">
+          <button class="gallery-nav prev" type="button" aria-label="Previous image">&#8249;</button>
+
+          <div class="gallery-stage" aria-live="polite">
+            <figure class="gallery-slide active">
+              <img src="g1.webp" alt="Lodha Azur facade at dusk" loading="lazy" decoding="async">
+            </figure>
+            <figure class="gallery-slide">
+              <img src="g2.webp" alt="Club and leisure spaces at Lodha Azur" loading="lazy" decoding="async">
+            </figure>
+            <figure class="gallery-slide">
+              <img src="g3.webp" alt="Interiors showcasing premium finishes" loading="lazy" decoding="async">
+            </figure>
+            <figure class="gallery-slide">
+              <img src="23.03.2024_1855055434_L-Azur_Image-Resize_1000X480_SN4.jpg" alt="Landscape views around Lodha Azur" loading="lazy" decoding="async">
+            </figure>
+            <figure class="gallery-slide">
+              <img src="23.03.2024_1855055434_L-Azur_Image-Resize_1000X480_SN5.jpg" alt="Residences and surroundings at Lodha Azur" loading="lazy" decoding="async">
+            </figure>
+          </div>
+
+          <button class="gallery-nav next" type="button" aria-label="Next image">&#8250;</button>
+        </div>
+
+        <div class="gallery-controls">
+          <div class="gallery-dots" role="tablist" aria-label="Gallery slides">
+            <button class="gallery-dot active" type="button" data-slide-index="0" aria-label="Go to slide 1"></button>
+            <button class="gallery-dot" type="button" data-slide-index="1" aria-label="Go to slide 2"></button>
+            <button class="gallery-dot" type="button" data-slide-index="2" aria-label="Go to slide 3"></button>
+            <button class="gallery-dot" type="button" data-slide-index="3" aria-label="Go to slide 4"></button>
+            <button class="gallery-dot" type="button" data-slide-index="4" aria-label="Go to slide 5"></button>
+          </div>
+          <p class="gallery-counter" aria-live="polite">1 / 5</p>
         </div>
       </div>
     </section>
 
     <section class="section location-advantage" id="location-advantage">
       <div class="container location-grid">
-
         <div class="loc-header">
           <h2 class="loc-title">Premium Connectivity</h2>
         </div>
@@ -306,7 +328,7 @@
             <button class="btn btn-map-switch loc-toggle-btn" type="button" aria-pressed="false">Open in map</button>
 
             <div class="loc-visual-pane loc-photo active" aria-label="Location illustration" role="img">
-              <img class="media-image" src="HD MAP.png" alt="Lodha Azur location illustration">
+              <img class="media-image" src="HD MAP.png" alt="Lodha Azur location illustration" loading="lazy" decoding="async">
             </div>
 
             <div class="loc-visual-pane loc-map" aria-hidden="true">
@@ -318,7 +340,6 @@
                 allowfullscreen
               ></iframe>
             </div>
-
           </div>
         </div>
 
@@ -328,110 +349,92 @@
           <ul class="connectivity-list" aria-label="Nearby landmarks and distances">
             <li class="connectivity-item icon-hospital">
               <span class="connect-icon" aria-hidden="true"></span>
-              <span class="connect-name">Camry Hospital</span>
+              <span class="connect-meta"><span class="connect-name">Camry Hospital</span><span class="connect-time">6 min drive</span></span>
               <span class="connect-distance">1.7 Km</span>
             </li>
             <li class="connectivity-item icon-plane">
               <span class="connect-icon" aria-hidden="true"></span>
-              <span class="connect-name">Royal Meenakshi Mall</span>
+              <span class="connect-meta"><span class="connect-name">Royal Meenakshi Mall</span><span class="connect-time">8 min drive</span></span>
               <span class="connect-distance">2 Km</span>
             </li>
             <li class="connectivity-item icon-train">
               <span class="connect-icon" aria-hidden="true"></span>
-              <span class="connect-name">Upcoming Gotigere Metro Station</span>
+              <span class="connect-meta"><span class="connect-name">Upcoming Gotigere Metro Station</span><span class="connect-time">8 min drive</span></span>
               <span class="connect-distance">2 Km</span>
             </li>
             <li class="connectivity-item icon-road">
               <span class="connect-icon" aria-hidden="true"></span>
-              <span class="connect-name">NICE Ring Road</span>
+              <span class="connect-meta"><span class="connect-name">NICE Ring Road</span><span class="connect-time">10 min drive</span></span>
               <span class="connect-distance">2.5 Km</span>
             </li>
             <li class="connectivity-item icon-road">
               <span class="connect-icon" aria-hidden="true"></span>
-              <span class="connect-name">Christ University Bannerghatta</span>
+              <span class="connect-meta"><span class="connect-name">Christ University Bannerghatta</span><span class="connect-time">11 min drive</span></span>
               <span class="connect-distance">2.8 Km</span>
             </li>
             <li class="connectivity-item icon-road">
               <span class="connect-icon" aria-hidden="true"></span>
-              <span class="connect-name">IIM Bangalore</span>
+              <span class="connect-meta"><span class="connect-name">IIM Bangalore</span><span class="connect-time">14 min drive</span></span>
               <span class="connect-distance">4 Km</span>
             </li>
             <li class="connectivity-item icon-train">
               <span class="connect-icon" aria-hidden="true"></span>
-              <span class="connect-name">Singasandra Metro Station</span>
+              <span class="connect-meta"><span class="connect-name">Singasandra Metro Station</span><span class="connect-time">16 min drive</span></span>
               <span class="connect-distance">5.2 Km</span>
             </li>
             <li class="connectivity-item icon-plane">
               <span class="connect-icon" aria-hidden="true"></span>
-              <span class="connect-name">Kempegowda International Airport</span>
+              <span class="connect-meta"><span class="connect-name">Kempegowda International Airport</span><span class="connect-time">70 min drive</span></span>
               <span class="connect-distance">46.6 Km</span>
             </li>
             <li class="connectivity-item icon-train">
               <span class="connect-icon" aria-hidden="true"></span>
-              <span class="connect-name">KSR Bangalore City Junction</span>
+              <span class="connect-meta"><span class="connect-name">KSR Bangalore City Junction</span><span class="connect-time">42 min drive</span></span>
               <span class="connect-distance">14.9 Km</span>
             </li>
           </ul>
 
           <a class="btn btn-map" href="https://wa.me/917411189191" target="_blank" rel="noopener">Get location</a>
         </div>
-
       </div>
     </section>
-
-    <section class="section gallery-section" id="gallery">
-      <div class="container gallery-shell">
-
-        <div class="gallery-header">
-          <span class="gallery-kicker">Gallery</span>
-          <h2 class="gallery-title">Moments from Lodha Azur</h2>
-          <div class="gallery-rule" aria-hidden="true"></div>
-        </div>
-
-        <div class="gallery-frame">
-          <button class="gallery-nav prev" type="button" aria-label="Previous image">‹</button>
-
-          <div class="gallery-stage" aria-live="polite">
-            <figure class="gallery-slide active">
-              <img src="g1.webp" alt="Lodha Azur facade at dusk">
-            </figure>
-            <figure class="gallery-slide">
-              <img src="g2.webp" alt="Club and leisure spaces at Lodha Azur">
-            </figure>
-            <figure class="gallery-slide">
-              <img src="g3.webp" alt="Interiors showcasing premium finishes">
-            </figure>
-            <figure class="gallery-slide">
-              <img src="23.03.2024_1855055434_L-Azur_Image-Resize_1000X480_SN4.jpg" alt="Landscape views around Lodha Azur">
-            </figure>
-            <figure class="gallery-slide">
-              <img src="23.03.2024_1855055434_L-Azur_Image-Resize_1000X480_SN5.jpg" alt="Residences and surroundings at Lodha Azur">
-            </figure>
-          </div>
-
-          <button class="gallery-nav next" type="button" aria-label="Next image">›</button>
-        </div>
-
-      </div>
-    </section>
-
+  </main>
 
   <footer class="site-footer">
-    <div class="container footer-grid">
-      <div><img class="footer-brand-logo" src="Lodha AZUR_Logo_2024-01.png" alt="Lodha Azur logo"></div>
-      <div>Akshaya Nagar, Bannerghatta Road, Bangalore</div>
-      <div>
-        <a href="tel:+917411189191">+91 74111 89191</a>
-        <a href="https://wa.me/917411189191" target="_blank" rel="noopener">WhatsApp: +91 74111 89191</a>
-        <a href="mailto:abhinav787@gmail.com">abhinav787@gmail.com</a>
+    <div class="container footer-shell">
+      <div class="footer-topbar">
+        <div class="footer-brand-wrap">
+          <img class="footer-brand-logo" src="Lodha AZUR_Logo_2024-01.png" alt="Lodha Azur logo">
+          <p class="footer-tagline">Lakefront luxury residences in South Bangalore.</p>
+        </div>
+        <a class="footer-tour-btn" href="tel:+917411189191">Schedule a Private Tour</a>
       </div>
-      <div>
-        <a href="#" class="legal-link" data-modal-target="privacy-modal">Privacy Policy</a>
-        <a href="#" class="legal-link" data-modal-target="disclaimer-modal">Disclaimer</a>
-        <a href="#hero">Back to Top</a>
+
+      <div class="footer-grid">
+        <article class="footer-card">
+          <p class="footer-kicker">Site Address</p>
+          <p class="footer-text">Akshaya Nagar, Bannerghatta Road, Bangalore</p>
+        </article>
+
+        <article class="footer-card">
+          <p class="footer-kicker">Connect With Us</p>
+          <a class="footer-link footer-link-phone" href="tel:+917411189191">+91 74111 89191</a>
+          <a class="footer-link footer-link-whatsapp" href="https://wa.me/917411189191" target="_blank" rel="noopener">WhatsApp: +91 74111 89191</a>
+          <a class="footer-link footer-link-mail" href="mailto:abhinav787@gmail.com">abhinav787@gmail.com</a>
+        </article>
+
+        <article class="footer-card">
+          <p class="footer-kicker">Legal</p>
+          <a href="#" class="footer-link legal-link" data-modal-target="privacy-modal">Privacy Policy</a>
+          <a href="#" class="footer-link legal-link" data-modal-target="disclaimer-modal">Disclaimer</a>
+        </article>
+      </div>
+
+      <div class="footer-bottom">
+        <a href="#hero" class="footer-backtop">Back to Top</a>
+        <p class="copyright">Copyright 2026 Lodha Azur. All rights reserved.</p>
       </div>
     </div>
-    <p class="copyright">Copyright 2026 Lodha Azur. All rights reserved.</p>
   </footer>
 
   <div class="legal-modal" id="disclaimer-modal" hidden>
@@ -458,6 +461,40 @@
       <p><strong>Usage of Developer or Builder Information:</strong> All images, videos, cost descriptions, logos, and other project materials featured on this landing page are presented in accordance with the respective project developer or its licensors. We are in legal agreements and established legal relationships with the said respective developer or builder, thereby possessing the authority to advertise, market for sale, and generate leads for the respective project.</p>
       <p><strong>Contact Us:</strong> If you have any questions or concerns about our Privacy Policy or to add or delete your data, please contact us at +91-7411189191 or you can send us an email on bkinfra7@gmail.com.</p>
     </div>
+  </div>
+
+  <div class="enquiry-modal" id="enquiry-modal" hidden>
+    <div class="enquiry-modal-panel" role="dialog" aria-modal="true" aria-labelledby="enquiry-modal-title">
+      <button class="enquiry-close" type="button" aria-label="Close enquiry form">Close</button>
+      <h3 id="enquiry-modal-title">Download Brochure</h3>
+      <p>Please share your details and our team will connect with you shortly.</p>
+      <form id="modalLeadForm" class="modal-lead-form" action="https://formsubmit.co/abhinav787@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Client Enquiry Received - Lodha Azur">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="thank-you.html">
+        <input type="hidden" name="Lead Source" id="modalLeadSource" value="Brochure Download">
+
+        <label for="modal-name">Full Name *</label>
+        <input id="modal-name" name="Name" type="text" placeholder="Enter full name" autocomplete="name" required>
+
+        <label for="modal-phone">Phone Number *</label>
+        <input id="modal-phone" name="Phone Number" type="tel" placeholder="Enter phone number" autocomplete="tel" required>
+
+        <label for="modal-email">Email *</label>
+        <input id="modal-email" name="Email" type="email" placeholder="Enter email address" autocomplete="email" required>
+
+        <button type="submit" class="btn btn-primary full" data-submit-label="Submit">Submit</button>
+        <p class="form-note">By submitting, you agree to be contacted by our sales team.</p>
+        <p class="form-feedback" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  <div class="mobile-action-bar" aria-label="Quick contact actions">
+    <a href="tel:+917411189191">Call</a>
+    <a href="https://wa.me/917411189191" target="_blank" rel="noopener">WhatsApp</a>
+    <button type="button" class="js-open-enquiry-modal" data-lead-source="Brochure Download - Mobile Sticky">Brochure</button>
   </div>
 
   <script src="script.js" defer></script>

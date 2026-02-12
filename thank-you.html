@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You | Lodha Azur</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #bf955b;
+      --ink: #1f1710;
+      --sand: #f4e8d5;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      font-family: "Lato", sans-serif;
+      color: #f6ecdd;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(191, 149, 91, 0.32), transparent 40%),
+        radial-gradient(circle at 86% 10%, rgba(191, 149, 91, 0.24), transparent 38%),
+        linear-gradient(150deg, #2a1d12 0%, #170f0a 100%);
+      text-align: center;
+    }
+
+    .thank-you-card {
+      width: min(760px, 100%);
+      border: 1px solid rgba(191, 149, 91, 0.5);
+      background: rgba(16, 10, 6, 0.62);
+      box-shadow: 0 26px 54px rgba(0, 0, 0, 0.44);
+      padding: clamp(30px, 5vw, 54px);
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-family: "Cormorant Garamond", serif;
+      color: var(--sand);
+      font-size: clamp(30px, 5.5vw, 56px);
+      line-height: 1.15;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    p {
+      margin: 0;
+      color: #e8d6bf;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: clamp(12px, 2vw, 15px);
+    }
+  </style>
+</head>
+<body>
+  <main class="thank-you-card">
+    <h1>THANK YOU WE WILL CONTACT YOU SOON !</h1>
+    <p>Copyright &copy;2026 | All Rights Reserved</p>
+  </main>
+</body>
+</html>
