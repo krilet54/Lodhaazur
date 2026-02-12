@@ -1,24 +1,29 @@
-const tabButtons = document.querySelectorAll(".tab-btn");
-const tabPanels = document.querySelectorAll(".tab-panel");
+const plansData = {
+  plan1: {
+    title: "3 BHK",
+    image: "3bhk.jpg",
+    desc: "3 Bedrooms · 3 Bathrooms · Living & Dining Hall · Kitchen · Private Deck · Utility Room\n\nCarpet Area: 1265 Sq.Ft."
+  },
+  plan2: {
+    title: "3 BHK + Study",
+    image: "3bhkstudy.jpg",
+    desc: "3 Bedrooms · 3 Bathrooms · Living & Dining Hall · Kitchen · 2 Private Decks · Utility Room · Dedicated Study\n\nCarpet Area: 1583 Sq.Ft."
+  }
+};
 
-tabButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const targetId = button.dataset.target;
+function openPlan(planKey) {
+  document.getElementById("plansGrid").style.display = "none";
+  document.getElementById("planExpanded").style.display = "block";
 
-    tabButtons.forEach((btn) => {
-      btn.classList.remove("active");
-      btn.setAttribute("aria-selected", "false");
-    });
+  document.getElementById("expandedTitle").innerText = plansData[planKey].title;
+  document.getElementById("expandedImg").src = plansData[planKey].image;
+  document.getElementById("expandedDesc").innerText = plansData[planKey].desc;
+}
 
-    tabPanels.forEach((panel) => panel.classList.remove("active"));
-
-    button.classList.add("active");
-    button.setAttribute("aria-selected", "true");
-
-    const activePanel = document.getElementById(targetId);
-    if (activePanel) activePanel.classList.add("active");
-  });
-});
+function closePlan() {
+  document.getElementById("planExpanded").style.display = "none";
+  document.getElementById("plansGrid").style.display = "flex";
+}
 
 const gallerySlides = document.querySelectorAll(".gallery-slide");
 const galleryButtons = document.querySelectorAll(".slider-btn");
@@ -145,4 +150,33 @@ document.addEventListener("keydown", (event) => {
   if (event.key !== "Escape") return;
   closeLegalModal(getOpenLegalModal());
 });
+
+/* Highlight background rotator (cycles images) */
+(() => {
+  const images = [
+    "g2.webp",
+    "23.03.2024_1855055434_L-Azur_Image-Resize_1000X480_SN4.jpg",
+    "23.03.2024_1855055434_L-Azur_Image-Resize_1000X480_SN5.jpg",
+    "g3.webp"
+  ];
+
+  let current = 0;
+  const bg = document.querySelector(".highlight-bg");
+  if (!bg) return;
+
+  // ensure initial image
+  bg.style.backgroundImage = `url(${images[0]})`;
+  bg.style.opacity = 1;
+
+  setInterval(() => {
+    current = (current + 1) % images.length;
+    bg.style.opacity = 0;
+
+    setTimeout(() => {
+      bg.style.backgroundImage = `url(${images[current]})`;
+      bg.style.opacity = 1;
+    }, 600);
+
+  }, 5000);
+})();
 
