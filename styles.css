@@ -1609,15 +1609,20 @@ body.modal-open {
 .enquiry-modal {
   position: fixed;
   inset: 0;
-  z-index: 90;
+  z-index: 90; /* base overlay */
   display: grid;
   place-items: center;
   padding: 24px;
   background: rgba(19, 14, 10, 0.76);
 }
 
+/* Ensure legal (privacy/terms) modals appear above enquiry modal */
+.legal-modal {
+  z-index: 210;
+}
+
 .enquiry-modal {
-  z-index: 95;
+  z-index: 195;
 }
 
 .legal-modal[hidden],
