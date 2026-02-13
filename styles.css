@@ -501,6 +501,27 @@ a {
   margin-top: 6px; /* 2px up from default */
 }
 
+/* small helper to ensure header logo link doesn't affect layout */
+.header-logo-link {
+  display: inline-block;
+}
+
+/* Make privacy link within form disclaimers stand out and remove footer bullet */
+.form-disclaimer .footer-link {
+  display: inline;
+  margin: 0;
+  padding-left: 0;
+  position: static;
+  color: var(--gold-deep);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.form-disclaimer .footer-link::before {
+  display: none;
+}
+
 .form-feedback {
   margin: 2px 0 0;
   min-height: 18px;
@@ -1544,6 +1565,25 @@ a {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   transition: all 0.25s ease;
+}
+
+/* RERA number styling in footer */
+.footer-rera {
+  display: inline-block;
+  font-size: 13px;
+  color: #fbf6ec; /* high contrast */
+  background: rgba(255, 255, 255, 0.04);
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 0;
+  box-shadow: 0 6px 18px rgba(8,6,4,0.35);
+}
+
+.footer-rera strong {
+  color: #fff;
+  font-weight: 800;
 }
 
 .footer-backtop:hover {
