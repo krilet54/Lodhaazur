@@ -13,7 +13,9 @@
 <body>
   <header class="site-header">
     <div class="container nav-wrap">
-      <img class="header-logo" src="logo.png" alt="Lodha Azur Preferred Partner">
+      <a href="#hero" class="header-logo-link">
+        <img class="header-logo" src="logo.png" alt="Lodha Azur Preferred Partner">
+      </a>
       <nav class="top-nav" aria-label="Main navigation">
         <a href="#overview">Overview</a>
         <a href="#amenities">Amenities</a>
@@ -30,7 +32,9 @@
 
   <main class="page-shell">
     <section class="hero" id="hero">
-      <img src="banner.jpg" class="hero-img" alt="Lodha Azur luxury residences" fetchpriority="high" decoding="async">
+      <picture class="hero-picture">
+        <img src="banner.jpg" class="hero-img" alt="Lodha Azur luxury residences" fetchpriority="high" decoding="async" loading="eager" srcset="banner.jpg 1x, banner.jpg 2x" sizes="100vw">
+      </picture>
       <div class="hero-copy">
         <h1>Lodha Azur presents super luxurious 3, 3.5 &amp; 4 Bedroom Apartments and Penthouses, located in Akshaya Nagar, Bannerghatta Road, Bangalore</h1>
 
@@ -79,7 +83,7 @@
 
         <button type="submit" class="btn btn-primary full" data-submit-label="Connect">Connect</button>
         <button type="button" class="btn btn-outline btn-brochure full js-open-enquiry-modal" data-lead-source="Brochure Download - Sidebar">Download Brochure</button>
-        <p class="form-disclaimer">I consent to the processing of provided data according to Privacy Policy | Terms & Conditions . I Authorize the representatives to Call, SMS, Email or WhatsApp Me About Its Products and Offers. This Consent Overrides Any Registration For DNC/NDNC.</p>
+        <p class="form-disclaimer">I consent to the processing of provided data according to <a href="#" class="footer-link legal-link" data-modal-target="privacy-modal">Privacy Policy | Terms & Conditions</a> . I Authorize the representatives to Call, SMS, Email or WhatsApp Me About Its Products and Offers. This Consent Overrides Any Registration For DNC/NDNC.</p>
         <p class="form-feedback" aria-live="polite"></p>
       </form>
     </aside>
@@ -426,6 +430,7 @@
 
       <div class="footer-bottom">
         <a href="#hero" class="footer-backtop">Back to Top</a>
+        <p class="footer-rera">Lodha Azur RERA No.: <strong>PRM/KA/RERA/1251/310/PR/220324/006728</strong></p>
         <p class="copyright">Copyright 2026 Lodha Azur. All rights reserved.</p>
       </div>
     </div>
@@ -475,7 +480,7 @@
         <input id="modal-email" name="Email" type="email" placeholder="Enter email address" autocomplete="email" required>
 
         <button type="submit" class="btn btn-primary full" data-submit-label="Connect">Connect</button>
-        <p class="form-disclaimer">I consent to the processing of provided data according to Privacy Policy | Terms & Conditions . I Authorize the representatives to Call, SMS, Email or WhatsApp Me About Its Products and Offers. This Consent Overrides Any Registration For DNC/NDNC.</p>
+        <p class="form-disclaimer">I consent to the processing of provided data according to <a href="#" class="footer-link legal-link" data-modal-target="privacy-modal">Privacy Policy | Terms & Conditions</a> . I Authorize the representatives to Call, SMS, Email or WhatsApp Me About Its Products and Offers. This Consent Overrides Any Registration For DNC/NDNC.</p>
         <p class="form-feedback" aria-live="polite"></p>
       </form>
     </div>
