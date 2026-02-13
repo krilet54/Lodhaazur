@@ -1738,6 +1738,10 @@ body.modal-open {
     width: min(var(--max-width), 100% - 28px);
   }
 
+  .gallery-section .container {
+    width: min(var(--max-width), 100% - 16px);
+  }
+
   #overview .split {
     grid-template-columns: 1fr;
   }
@@ -1815,6 +1819,15 @@ body.modal-open {
 
   .plans-price-table {
     min-width: 470px;
+  }
+
+  .gallery-stage {
+    aspect-ratio: 4 / 3;
+    min-height: 230px;
+  }
+
+  .gallery-slide {
+    margin: 0;
   }
 
   .gallery-nav {
