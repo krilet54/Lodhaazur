@@ -92,7 +92,18 @@ const enquiryOpeners = document.querySelectorAll(".js-open-enquiry-modal");
 const enquiryCloseBtn = enquiryModal ? enquiryModal.querySelector(".enquiry-close") : null;
 const modalLeadSourceInput = document.getElementById("modalLeadSource");
 const enquiryModalTitle = document.getElementById("enquiry-modal-title");
-const formsubmitForms = document.querySelectorAll('form[action*="formsubmit.co"]');
+const leadForms = document.querySelectorAll(".lead-capture-form, .modal-lead-form");
+
+const EMAILJS_CONFIG = {
+  publicKey: "",
+  serviceId: "",
+  adminTemplateId: "",
+  userTemplateId: "",
+  adminRecipientEmail: "abhinav787@gmail.com",
+  ...(window.EMAILJS_CONFIG || {})
+};
+
+let emailJsInitialized = false;
 
 function getThankYouUrl() {
   const basePath = window.location.pathname.replace(/[^/]*$/, "");
@@ -161,12 +172,115 @@ function setFormFeedback(form, message, type) {
   node.classList.toggle("is-error", type === "error");
 }
 
-function enhanceForm(form) {
-  const nextInput = form.querySelector('input[name="_next"]');
-  if (nextInput) {
-    nextInput.value = getThankYouUrl();
+function isEmailJsConfigValid() {
+  return Boolean(
+    EMAILJS_CONFIG.publicKey &&
+    EMAILJS_CONFIG.serviceId &&
+    EMAILJS_CONFIG.adminTemplateId &&
+    EMAILJS_CONFIG.userTemplateId
+  );
+}
+
+function initEmailJs() {
+  if (emailJsInitialized) return true;
+  if (!window.emailjs || typeof window.emailjs.init !== "function") return false;
+  if (!isEmailJsConfigValid()) return false;
+
+  // Support both init signatures used across EmailJS browser SDK versions.
+  try {
+    window.emailjs.init({
+      publicKey: EMAILJS_CONFIG.publicKey
+    });
+  } catch (_error) {
+    window.emailjs.init(EMAILJS_CONFIG.publicKey);
   }
 
+  emailJsInitialized = true;
+  return true;
+}
+
+function getLeadPayload(form) {
+  const name = (form.querySelector('input[name="Name"]')?.value || "").trim();
+  const phone = (form.querySelector('input[name="Phone Number"]')?.value || "").trim();
+  const email = (form.querySelector('input[name="Email"]')?.value || "").trim().toLowerCase().replace(/\s+/g, "");
+  const leadSource = (form.querySelector('input[name="Lead Source"]')?.value || "Website Enquiry").trim();
+
+  return {
+    user_name: name,
+    user_phone: phone,
+    user_email: email,
+    name,
+    phone,
+    email,
+    from_name: name,
+    from_email: email,
+    reply_to: email,
+    to_name: name,
+    lead_source: leadSource,
+    to_email: email,
+    project_name: "Lodha Azur",
+    page_url: window.location.href,
+    submitted_at: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
+    year: new Date().getFullYear()
+  };
+}
+
+function isStrictEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test((value || "").trim());
+}
+
+async function sendLeadEmails(templateParams) {
+  const sendOptions = {
+    publicKey: EMAILJS_CONFIG.publicKey
+  };
+
+  const adminRecipient = (EMAILJS_CONFIG.adminRecipientEmail || "").trim().toLowerCase();
+  const userRecipient = (templateParams.user_email || "").trim().toLowerCase();
+
+  const adminParams = {
+    ...templateParams,
+    to_email: adminRecipient,
+    recipient_email: adminRecipient,
+    email_to: adminRecipient,
+    to: adminRecipient
+  };
+
+  const userParams = {
+    ...templateParams,
+    to_email: userRecipient,
+    recipient_email: userRecipient,
+    email_to: userRecipient,
+    to: userRecipient
+  };
+
+  const [adminResult, userResult] = await Promise.allSettled([
+    window.emailjs.send(
+      EMAILJS_CONFIG.serviceId,
+      EMAILJS_CONFIG.adminTemplateId,
+      adminParams,
+      sendOptions
+    ),
+    window.emailjs.send(
+      EMAILJS_CONFIG.serviceId,
+      EMAILJS_CONFIG.userTemplateId,
+      userParams,
+      sendOptions
+    )
+  ]);
+
+  if (adminResult.status === "rejected" || userResult.status === "rejected") {
+    const adminReason = adminResult.status === "rejected"
+      ? `Admin email failed: ${adminResult.reason?.text || adminResult.reason?.message || "unknown error"}`
+      : "";
+    const userReason = userResult.status === "rejected"
+      ? `User email failed: ${userResult.reason?.text || userResult.reason?.message || "unknown error"}`
+      : "";
+    const reason = [adminReason, userReason].filter(Boolean).join(" | ");
+    throw new Error(reason);
+  }
+}
+
+function enhanceForm(form) {
   const phoneInput = form.querySelector('input[name="Phone Number"]');
   const emailInput = form.querySelector('input[name="Email"]');
   const submitBtn = form.querySelector('button[type="submit"]');
@@ -182,16 +296,29 @@ function enhanceForm(form) {
 
   if (emailInput) {
     emailInput.addEventListener("input", () => {
-      const valid = emailInput.validity.valid || emailInput.value.trim() === "";
+      const value = emailInput.value.trim();
+      const valid = value === "" || isStrictEmail(value);
       emailInput.setCustomValidity(valid ? "" : "Please enter a valid email address.");
     });
   }
 
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
     const isValid = form.reportValidity();
     if (!isValid) {
-      event.preventDefault();
       setFormFeedback(form, "Please complete all required details.", "error");
+      return;
+    }
+
+    const emailValue = (form.querySelector('input[name="Email"]')?.value || "").trim();
+    if (!isStrictEmail(emailValue)) {
+      setFormFeedback(form, "Please enter a valid email address.", "error");
+      return;
+    }
+
+    if (!initEmailJs()) {
+      setFormFeedback(form, "Email setup is incomplete. Please contact support.", "error");
       return;
     }
 
@@ -201,16 +328,30 @@ function enhanceForm(form) {
     }
     setFormFeedback(form, "Submitting your enquiry...", "success");
 
-    setTimeout(() => {
+    try {
+      await sendLeadEmails(getLeadPayload(form));
+      setFormFeedback(form, "Thank you. Your enquiry has been submitted successfully.", "success");
+      form.reset();
+      if (form.id === "modalLeadForm") {
+        closeEnquiryModal();
+      }
+      setTimeout(() => {
+        window.location.href = getThankYouUrl();
+      }, 700);
+    } catch (error) {
+      console.error("EmailJS submission failed:", error);
+      const reason = error?.message ? ` (${error.message})` : "";
+      setFormFeedback(form, `We could not submit your enquiry. Please try again in a moment.${reason}`, "error");
+    } finally {
       if (submitBtn) {
         submitBtn.disabled = false;
         submitBtn.textContent = submitLabel;
       }
-    }, 8000);
+    }
   });
 }
 
-formsubmitForms.forEach(enhanceForm);
+leadForms.forEach(enhanceForm);
 
 legalLinks.forEach((link) => {
   link.addEventListener("click", (event) => {
