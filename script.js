@@ -85,7 +85,7 @@ if (galleryNext && galleryPrev && gallerySlides.length) {
   syncGalleryUi();
 }
 
-const legalLinks = document.querySelectorAll(".legal-link");
+const legalLinks = document.querySelectorAll(".legal-link[data-modal-target]");
 const legalModals = document.querySelectorAll(".legal-modal");
 const enquiryModal = document.getElementById("enquiry-modal");
 const enquiryOpeners = document.querySelectorAll(".js-open-enquiry-modal");
@@ -450,3 +450,4 @@ document.addEventListener("keydown", (event) => {
     }, 600);
   }, 5000);
 })();
+
