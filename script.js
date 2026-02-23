@@ -176,8 +176,7 @@ function isEmailJsConfigValid() {
   return Boolean(
     EMAILJS_CONFIG.publicKey &&
     EMAILJS_CONFIG.serviceId &&
-    EMAILJS_CONFIG.adminTemplateId &&
-    EMAILJS_CONFIG.userTemplateId
+    EMAILJS_CONFIG.adminTemplateId
   );
 }
 
@@ -233,9 +232,7 @@ async function sendLeadEmails(templateParams) {
   const sendOptions = {
     publicKey: EMAILJS_CONFIG.publicKey
   };
-
   const adminRecipient = (EMAILJS_CONFIG.adminRecipientEmail || "").trim().toLowerCase();
-  const userRecipient = (templateParams.user_email || "").trim().toLowerCase();
 
   const adminParams = {
     ...templateParams,
@@ -245,38 +242,16 @@ async function sendLeadEmails(templateParams) {
     to: adminRecipient
   };
 
-  const userParams = {
-    ...templateParams,
-    to_email: userRecipient,
-    recipient_email: userRecipient,
-    email_to: userRecipient,
-    to: userRecipient
-  };
+  // Only send admin/owner email. Do not send a copy to the user.
+  const adminResult = await window.emailjs.send(
+    EMAILJS_CONFIG.serviceId,
+    EMAILJS_CONFIG.adminTemplateId,
+    adminParams,
+    sendOptions
+  );
 
-  const [adminResult, userResult] = await Promise.allSettled([
-    window.emailjs.send(
-      EMAILJS_CONFIG.serviceId,
-      EMAILJS_CONFIG.adminTemplateId,
-      adminParams,
-      sendOptions
-    ),
-    window.emailjs.send(
-      EMAILJS_CONFIG.serviceId,
-      EMAILJS_CONFIG.userTemplateId,
-      userParams,
-      sendOptions
-    )
-  ]);
-
-  if (adminResult.status === "rejected" || userResult.status === "rejected") {
-    const adminReason = adminResult.status === "rejected"
-      ? `Admin email failed: ${adminResult.reason?.text || adminResult.reason?.message || "unknown error"}`
-      : "";
-    const userReason = userResult.status === "rejected"
-      ? `User email failed: ${userResult.reason?.text || userResult.reason?.message || "unknown error"}`
-      : "";
-    const reason = [adminReason, userReason].filter(Boolean).join(" | ");
-    throw new Error(reason);
+  if (!adminResult) {
+    throw new Error("Admin email failed to send");
   }
 }
 
